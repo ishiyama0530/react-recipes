@@ -1,9 +1,9 @@
-import ApplicationSnackbar from '../../../components/organisms/ApplicationSnackbar'
+import ApplicationSnackbar from '../../components/organisms/ApplicationSnackbar'
 import React, { PureComponent } from 'react'
-import ReduxTemplate from '../../../components/templates/ReduxTemplate'
-import { AppState } from '../../../ducks/store'
+import ReduxTemplate from '../../components/templates/ReduxTemplate'
+import { AppState } from '../../ducks/store'
 import { Dispatch } from 'redux'
-import { userActions, LoginPayload } from '../../../ducks/user'
+import { userActions, LoginPayload } from '../../ducks/user'
 import { connect } from 'react-redux'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined'
 import {

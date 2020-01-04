@@ -9,6 +9,7 @@ import {
   Button
 } from '@material-ui/core'
 import CardLink from '../components/molecules/CardLink'
+import { useHistory } from 'react-router-dom'
 
 const useStyles = makeStyles((theme: Theme) => ({
   icon: {
@@ -28,6 +29,10 @@ const useStyles = makeStyles((theme: Theme) => ({
 }))
 
 const Home: React.FC = () => {
+  const history = useHistory()
+  const handleErrorBoundaryTestClick = () => {
+    history.push('/errorstub')
+  }
   const classes = useStyles()
   return (
     <HomeTemplate>
@@ -54,13 +59,17 @@ const Home: React.FC = () => {
           <div className={classes.heroButtons}>
             <Grid container spacing={2} justify="center">
               <Grid item>
-                <Button variant="contained" color="primary">
-                  Main call to action
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleErrorBoundaryTestClick}
+                >
+                  ErrorBoundary Test
                 </Button>
               </Grid>
               <Grid item>
                 <Button variant="outlined" color="primary">
-                  Secondary action
+                  Global Handle Error Test
                 </Button>
               </Grid>
             </Grid>

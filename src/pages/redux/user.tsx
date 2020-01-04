@@ -1,9 +1,9 @@
-import ApplicationSnackbar from '../../../components/organisms/ApplicationSnackbar'
+import ApplicationSnackbar from '../../components/organisms/ApplicationSnackbar'
 import React, { PureComponent } from 'react'
-import ReduxTemplate from '../../../components/templates/ReduxTemplate'
-import { AppState } from '../../../ducks/store'
+import ReduxTemplate from '../../components/templates/ReduxTemplate'
+import { AppState } from '../../ducks/store'
 import { Dispatch } from 'redux'
-import { userActions, UserState } from '../../../ducks/user'
+import { userActions, UserState } from '../../ducks/user'
 import { connect } from 'react-redux'
 import {
   Theme,

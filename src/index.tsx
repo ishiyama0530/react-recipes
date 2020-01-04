@@ -4,6 +4,9 @@ import * as serviceWorker from './serviceWorker'
 import App from './App'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import GlobalHandleError from './libs/error/GlobalHandleError'
+
+GlobalHandleError.setup()
 
 ReactDOM.render(<App />, document.getElementById('root'))
 
