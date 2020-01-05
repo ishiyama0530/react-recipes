@@ -89,7 +89,7 @@ const Home: React.FC = () => {
                 title="Redux User Profile"
                 description="Use Redux with React.PureComponent."
                 pictureKeywrod="animal"
-                source="#"
+                source="https://github.com/ishiyama0530/react-recipes/tree/master/src/pages/redux"
                 to="/reduxuser"
               />
             </Grid>
@@ -98,8 +98,26 @@ const Home: React.FC = () => {
                 title="Context API User Profile"
                 description="Use Context API with React Hooks."
                 pictureKeywrod="bird"
-                source="#"
+                source="https://github.com/ishiyama0530/react-recipes/tree/master/src/pages/contextapi"
                 to="/contextapi"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <CardLink
+                title="XMLHttpRequest sample"
+                description="Use axios."
+                pictureKeywrod="fish"
+                source="https://github.com/ishiyama0530/react-recipes/tree/master/src/pages/xmlhttprequest"
+                to="/xmlhttprequest"
+              />
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <CardLink
+                title="GraphQL sample"
+                description="Use Apollo Client."
+                pictureKeywrod="plant"
+                source="https://github.com/ishiyama0530/react-recipes/tree/master/src/pages/graphql"
+                to="/graphql"
               />
             </Grid>
           </Grid>

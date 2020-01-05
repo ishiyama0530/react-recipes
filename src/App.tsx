@@ -11,6 +11,8 @@ import ErrorStub from './pages/errorstub'
 import Home from './pages/Home'
 import ReduxLogin from './pages/redux/login'
 import ReduxUser from './pages/redux/user'
+import XMLHttpRequest from './pages/xmlhttprequest'
+import GraphQL from './pages/graphql'
 
 const App: React.FC = () => {
   return (
@@ -22,6 +24,8 @@ const App: React.FC = () => {
             <Route exact path="/errorstub" component={ErrorStub} />
             <Route exact path="/reduxlogin" component={ReduxLogin} />
             <Route exact path="/contextapi" component={ContextApi} />
+            <Route exact path="/xmlhttprequest" component={XMLHttpRequest} />
+            <Route exact path="/graphql" component={GraphQL} />
             <ReduxPrivateRoute exact path="/reduxuser" component={ReduxUser} />
             <Route exact path="/error" component={Error500} />
             <Route component={Error404} />
