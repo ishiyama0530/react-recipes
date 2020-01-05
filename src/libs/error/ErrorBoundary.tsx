@@ -2,7 +2,7 @@ import React from 'react'
 import env from '../env'
 import { Redirect } from 'react-router-dom'
 
-type Props = { children: import('react').ReactNode }
+type Props = { children: React.ReactNode }
 type State = typeof initialState
 
 const initialState = {

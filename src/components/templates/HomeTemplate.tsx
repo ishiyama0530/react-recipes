@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import Footer from '../organisms/Footer'
 
 type Prop = {
-  children: import('react').ReactNode
+  children: React.ReactNode
   className?: string
 }
 
