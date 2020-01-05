@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ErrorInfo } from 'react'
 import env from '../env'
 
 type Props = {
@@ -19,6 +19,11 @@ class ErrorBoundary extends React.PureComponent<Props, State> {
 
   static getDerivedStateFromError() {
     return { hasError: true }
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error(error)
+    console.error(errorInfo)
   }
 
   render() {
