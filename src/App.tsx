@@ -16,7 +16,7 @@ const App: React.FC = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <ErrorBoundary component={<Error500 />}>
+        <ErrorBoundary errorUrl="/error">
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/errorstub" component={ErrorStub} />

@@ -1,9 +1,9 @@
-import React, { ErrorInfo } from 'react'
+import React from 'react'
 import env from '../env'
 
 type Props = {
   children: React.ReactNode
-  component: React.ReactNode
+  errorUrl: string
 }
 type State = typeof initialState
 
@@ -17,22 +17,13 @@ class ErrorBoundary extends React.PureComponent<Props, State> {
     this.state = { hasError: false }
   }
 
-  static getDerivedStateFromError() {
-    return { hasError: true }
-  }
-
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error(error)
-    console.error(errorInfo)
+  componentDidCatch() {
+    if (!env.develop) {
+      window.location.href = this.props.errorUrl
+    }
   }
 
   render() {
-    if (this.state.hasError) {
-      if (!env.develop) {
-        return this.props.component
-      }
-    }
-
     return this.props.children
   }
 }
