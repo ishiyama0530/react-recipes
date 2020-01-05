@@ -33,6 +33,9 @@ const Home: React.FC = () => {
   const handleErrorBoundaryTestClick = () => {
     history.push('/errorstub')
   }
+  const handleGlobalHandleErrorTestClick = () => {
+    throw new Error('from handleGlobalHandleErrorTestClick.')
+  }
   const classes = useStyles()
   return (
     <HomeTemplate>
@@ -68,7 +71,11 @@ const Home: React.FC = () => {
                 </Button>
               </Grid>
               <Grid item>
-                <Button variant="outlined" color="primary">
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  onClick={handleGlobalHandleErrorTestClick}
+                >
                   Global Handle Error Test
                 </Button>
               </Grid>
