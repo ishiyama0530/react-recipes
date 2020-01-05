@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core'
 
 type Prop = {
-  children: import('react').ReactNode
+  children: React.ReactNode
   className?: string
   noappBar?: boolean
   logout: () => void

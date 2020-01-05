@@ -26,8 +26,8 @@ const useStyles = makeStyles((theme: Theme) =>
 type Props = {
   to?: string
   href?: string
-  icon: import('react').ReactNode
-  children: import('react').ReactNode
+  icon: React.ReactNode
+  children: React.ReactNode
 }
 
 const IconLink: React.FC<Props> = ({ to, href, icon, children }) => {
