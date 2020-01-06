@@ -10,13 +10,10 @@ import {
   StyleRules,
   createStyles,
   WithStyles,
-  withStyles,
-  TextField,
-  Container,
-  Typography,
-  Button
+  withStyles
 } from '@material-ui/core'
 import { RouteComponentProps } from 'react-router-dom'
+import UserForm from '../../components/organisms/UserForm'
 
 type Props = {
   children?: never
@@ -35,28 +32,14 @@ const initialState = {
 
 const styles = (theme: Theme): StyleRules =>
   createStyles({
-    root: { backgroundColor: theme.palette.background.paper },
-    paper: {
-      paddingTop: theme.spacing(12),
-      paddingBottom: theme.spacing(12),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center'
-    },
-    form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(12)
-    },
-    button: {
-      margin: theme.spacing(5, 0, 2)
-    }
+    root: { backgroundColor: theme.palette.background.paper }
   })
 
 class User extends PureComponent<Props, State> {
   constructor(props: Props) {
     super(props)
     const localInitialState = initialState
-    localInitialState.name = props.name
+    localInitialState.name = props.userName
     this.state = localInitialState
 
     this.handleNameChange = this.handleNameChange.bind(this)
@@ -69,24 +52,24 @@ class User extends PureComponent<Props, State> {
     this.setState({ name: e.currentTarget.value })
   }
 
-  handleEdit(event: React.MouseEvent | React.FormEvent) {
-    event.preventDefault()
+  handleEdit(e: React.MouseEvent | React.FormEvent) {
+    e.preventDefault()
     this.setState({ readonly: false })
   }
 
-  handleSave(event: React.MouseEvent | React.FormEvent) {
-    event.preventDefault()
+  handleSave(e: React.MouseEvent | React.FormEvent) {
+    e.preventDefault()
     if (!this.state.name) {
-      this.setState({ snackbarMessage: 'email is empty.' })
+      this.setState({ snackbarMessage: 'name is empty.' })
       return
     }
     this.props.updateName(this.state.name)
     this.setState({ readonly: true })
-    this.setState({ snackbarMessage: 'namechanged.' })
+    this.setState({ snackbarMessage: 'name changed.' })
   }
 
   handleSnackbarClose(
-    event: React.SyntheticEvent | React.MouseEvent,
+    e: React.SyntheticEvent | React.MouseEvent,
     reason?: string
   ) {
     if (reason === 'clickaway') {
@@ -101,49 +84,13 @@ class User extends PureComponent<Props, State> {
     return (
       <React.Fragment>
         <ReduxTemplate className={classes.root}>
-          <Container maxWidth="xs">
-            <div className={classes.paper}>
-              <Typography component="h1" variant="h5">
-                Your Profile
-              </Typography>
-              <form
-                className={classes.form}
-                noValidate
-                onSubmit={this.handleSave}
-              >
-                <TextField
-                  label="Name"
-                  fullWidth
-                  value={name}
-                  onChange={this.handleNameChange}
-                  disabled={readonly}
-                />
-                {readonly ? (
-                  <Button
-                    className={classes.button}
-                    color="inherit"
-                    fullWidth
-                    onClick={this.handleEdit}
-                    type="button"
-                    variant="contained"
-                  >
-                    Edit
-                  </Button>
-                ) : (
-                  <Button
-                    className={classes.button}
-                    color="primary"
-                    fullWidth
-                    onClick={this.handleSave}
-                    type="submit"
-                    variant="contained"
-                  >
-                    Save
-                  </Button>
-                )}
-              </form>
-            </div>
-          </Container>
+          <UserForm
+            name={name}
+            readonly={readonly}
+            handleEdit={this.handleEdit}
+            handleNameChange={this.handleNameChange}
+            handleSave={this.handleSave}
+          />
         </ReduxTemplate>
         <ApplicationSnackbar
           handleClose={this.handleSnackbarClose}
@@ -156,7 +103,7 @@ class User extends PureComponent<Props, State> {
 
 function mapDispatchToProps(dispatch: Dispatch) {
   return {
-    updateName: (v: string) => dispatch(userActions.updateName(v))
+    updateName: (v: string) => dispatch(userActions.updateUserName(v))
   }
 }
 

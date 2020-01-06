@@ -7,7 +7,8 @@ import {
   CardContent,
   Typography,
   CardActions,
-  Button
+  Button,
+  createStyles
 } from '@material-ui/core'
 import { Link } from 'react-router-dom'
 
@@ -20,19 +21,21 @@ type Props = {
   children?: never
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  cardMedia: {
-    paddingTop: '56.25%' // 16:9
-  },
-  cardContent: {
-    flexGrow: 1
-  }
-}))
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    card: {
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column'
+    },
+    cardMedia: {
+      paddingTop: '56.25%' // 16:9
+    },
+    cardContent: {
+      flexGrow: 1
+    }
+  })
+)
 
 const CardLink: React.FC<Props> = ({
   pictureKeywrod,

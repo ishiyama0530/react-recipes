@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom'
 type Props = {
   user: {
     authenticated: boolean
-    name: string
+    userName: string
   }
   children?: never
   handleLogout: () => void
@@ -63,7 +63,7 @@ const ApplicationBar: React.FC<Props> = ({ user, handleLogout }) => {
           </Typography>
           {user.authenticated && (
             <React.Fragment>
-              <Typography variant="h6">{user.name}</Typography>
+              <Typography variant="h6">{user.userName}</Typography>
               <IconButton
                 className={classes.menuButton}
                 color="inherit"

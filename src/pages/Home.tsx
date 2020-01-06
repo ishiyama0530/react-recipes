@@ -99,7 +99,7 @@ const Home: React.FC = () => {
                 description="Use Context API with React Hooks."
                 pictureKeywrod="bird"
                 source="https://github.com/ishiyama0530/react-recipes/tree/master/src/pages/contextapi"
-                to="/contextapi"
+                to="/contextapiuser"
               />
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
