@@ -45,7 +45,8 @@ class ReduxTemplate extends React.PureComponent<Prop> {
       children,
       className = '',
       authenticated,
-      name,
+      userName,
+      logout,
       noappBar = false
     } = this.props
     return (
@@ -54,8 +55,8 @@ class ReduxTemplate extends React.PureComponent<Prop> {
           <CssBaseline />
           {!noappBar && (
             <ApplicationBar
-              user={{ authenticated, name }}
-              handleLogout={this.handleLogout}
+              user={{ authenticated, userName }}
+              handleLogout={() => logout()}
             />
           )}
           <main className={noappBar ? '' : classes.main}>{children}</main>

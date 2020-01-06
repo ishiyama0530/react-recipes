@@ -10,11 +10,11 @@ import { UserState } from '../../ducks/user'
 import { AppState } from '../../ducks/store'
 import { connect } from 'react-redux'
 
-type Props = RouteProps & RouteComponentProps & UserState
+type Props = { path: string } & RouteProps & RouteComponentProps & UserState
 
 class ReduxPrivateRoute extends React.PureComponent<Props> {
   render() {
-    const { authenticated, location } = this.props
+    const { authenticated, path } = this.props
     const routerProps: RouteProps = {
       location: this.props.location,
       component: this.props.component,
@@ -29,11 +29,7 @@ class ReduxPrivateRoute extends React.PureComponent<Props> {
       return <Route {...routerProps} />
     } else {
       return (
-        <Redirect
-          to={`/reduxlogin?redirectUrl=${encodeURIComponent(
-            location.pathname
-          )}`}
-        />
+        <Redirect to={`/reduxlogin?redirectUrl=${encodeURIComponent(path)}`} />
       )
     }
   }

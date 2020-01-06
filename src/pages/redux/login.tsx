@@ -77,8 +77,8 @@ class Login extends PureComponent<Props, State> {
     this.setState({ password: e.currentTarget.value })
   }
 
-  handleLogin(event: React.MouseEvent | React.FormEvent) {
-    event.preventDefault()
+  handleLogin = (e: React.MouseEvent | React.FormEvent) => {
+    e.preventDefault()
     if (!this.state.email) {
       this.setState({ snackbarMessage: 'email is empty.' })
       return
@@ -94,10 +94,10 @@ class Login extends PureComponent<Props, State> {
     this.props.history.push(redirectUrl)
   }
 
-  handleSnackbarClose(
-    event: React.SyntheticEvent | React.MouseEvent,
+  handleSnackbarClose = (
+    e: React.SyntheticEvent | React.MouseEvent,
     reason?: string
-  ) {
+  ) => {
     if (reason === 'clickaway') {
       return
     }
