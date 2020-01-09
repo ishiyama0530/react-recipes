@@ -25,4 +25,5 @@ const setup = () => {
     window.location.href = '/error'
   })
 }
+
 export default { setup }
