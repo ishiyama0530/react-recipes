@@ -19,6 +19,7 @@ module.exports = {
     'react/prop-types': 'off',
     'space-before-function-paren': 0,
     '@typescript-eslint/no-unused-vars': 1,
+    "@typescript-eslint/no-floating-promises": 0,
     '@typescript-eslint/strict-boolean-expressions': 0,
     '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     '@typescript-eslint/explicit-function-return-type': 'off',
