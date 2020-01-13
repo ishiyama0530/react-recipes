@@ -10,4 +10,4 @@ const setup = () => {
   )
 }
 
-export default { setup }
+export default setup

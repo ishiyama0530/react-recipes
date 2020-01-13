@@ -5,10 +5,10 @@ import App from './App'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import GlobalHandleError from './libs/error/GlobalHandleError'
-import AxiosInterceptors from './libs/axioshooks/AxiosInterceptors'
+import { setup as axiosSetup } from './libs/axios'
 
 GlobalHandleError.setup()
-AxiosInterceptors.setup()
+axiosSetup()
 
 ReactDOM.render(<App />, document.getElementById('root'))
 
