@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
 import {
   makeStyles,
   Theme,
@@ -10,30 +9,9 @@ import {
 import HomeTemplate from '../../components/templates/HomeTemplate'
 import NewsCardLink from '../../components/molecules/NewsCardLink'
 import noimage from '../../assets/images/noimage.png'
+import tophedline, { Article } from '../../repositories/newapi/tophedline'
 
 type Props = { children?: never }
-
-type Response = {
-  status: string
-  totalResults: number
-  articles: Article[]
-}
-
-type Article = {
-  source: Source
-  author: string
-  title: string
-  description: string
-  url: string
-  urlToImage: string
-  publishedAt: Date
-  content: null
-}
-
-type Source = {
-  id: null
-  name: string
-}
 
 const useStyles = makeStyles((theme: Theme) => ({
   icon: {
@@ -55,20 +33,19 @@ const useStyles = makeStyles((theme: Theme) => ({
 const XMLHttpRequest: React.FC<Props> = () => {
   const classes = useStyles()
   const [articles, setArticles] = useState<Article[]>([])
+  const filteredArticles = articles.filter(x => x.title && x.description)
 
   useEffect(() => {
     fetchNews()
   }, [])
 
   async function fetchNews() {
-    const res = await axios.get<Response>(
-      'https://newsapi.org/v2/top-headlines?country=jp&pageSize=100&apiKey=f3162fdbcda94506afd7e7228b8376f9'
-    )
-
-    setArticles(res.data.articles)
+    const res = await tophedline.get('jp', 100)
+    if (res.ok) {
+      setArticles(res.data.articles)
+    }
   }
 
-  const filteredArticles = articles.filter(x => x.title && x.description)
   return (
     <HomeTemplate>
       <div className={classes.heroContent}>
