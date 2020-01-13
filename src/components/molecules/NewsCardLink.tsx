@@ -36,6 +36,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const NewsCardLink: React.FC<Props> = ({ eyecatch, description, href }) => {
   const classes = useStyles()
+  let body
+  if (description.length <= 100) {
+    body = description
+  } else {
+    body = description.substring(0, 99) + '…'
+  }
+
   return (
     <Card className={classes.card}>
       <a
@@ -47,7 +54,7 @@ const NewsCardLink: React.FC<Props> = ({ eyecatch, description, href }) => {
         <CardMedia className={classes.cardMedia} image={eyecatch} />
         <CardContent className={classes.cardContent}>
           <Typography variant="body2" component="span">
-            {description}
+            {body}
           </Typography>
         </CardContent>
       </a>
