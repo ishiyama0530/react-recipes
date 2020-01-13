@@ -107,7 +107,7 @@ const XMLHttpRequest: React.FC<Props> = () => {
               <Grid item xs={12} sm={6} md={3} key={idx}>
                 <NewsCardLink
                   description={x.description}
-                  eyecatch={x.urlToImage ?? noimage}
+                  imgeUrl={x.urlToImage ?? noimage}
                   href={x.url}
                 />
               </Grid>

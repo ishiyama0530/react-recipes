@@ -10,7 +10,7 @@ import {
 
 type Props = {
   description: string
-  eyecatch: string
+  imgeUrl: string
   href: string
   children?: never
 }
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   }
 }))
 
-const NewsCardLink: React.FC<Props> = ({ eyecatch, description, href }) => {
+const NewsCardLink: React.FC<Props> = ({ imgeUrl, description, href }) => {
   const classes = useStyles()
   let body
   if (description.length <= 100) {
@@ -51,7 +51,7 @@ const NewsCardLink: React.FC<Props> = ({ eyecatch, description, href }) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <CardMedia className={classes.cardMedia} image={eyecatch} />
+        <CardMedia className={classes.cardMedia} image={imgeUrl} />
         <CardContent className={classes.cardContent}>
           <Typography variant="body2" component="span">
             {body}
