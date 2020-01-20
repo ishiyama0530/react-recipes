@@ -36,10 +36,10 @@ const XMLHttpRequest: React.FC<Props> = () => {
   const filteredArticles = articles.filter(x => x.title && x.description)
 
   useEffect(() => {
-    fetchNews()
+    fetch()
   }, [])
 
-  async function fetchNews() {
+  async function fetch() {
     const res = await tophedline.get('jp', 100)
     if (res.ok) {
       setArticles(res.data.articles)

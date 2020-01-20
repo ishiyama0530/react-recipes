@@ -6,9 +6,14 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import GlobalHandleError from './libs/error/GlobalHandleError'
 import { setup as axiosSetup } from './libs/axios'
+import env from './libs/env'
 
 GlobalHandleError.setup()
 axiosSetup()
+
+if (env.develop) {
+  console.log(JSON.stringify(process.env))
+}
 
 ReactDOM.render(<App />, document.getElementById('root'))
 
