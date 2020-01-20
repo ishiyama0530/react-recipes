@@ -1,2 +1,2 @@
-import applloclient from './applloclient'
-export default { applloclient }
+import apolloclient from './apolloclient'
+export default { apolloclient }

@@ -1,28 +1,35 @@
 import React from 'react'
 // import { makeStyles, Theme } from '@material-ui/core'
 import { gql } from 'apollo-boost'
-import applloclient from '../../libs/apollo/applloclient'
+import { useQuery } from '@apollo/react-hooks'
 
 type Props = { children?: never }
+
+const EXCHANGE_RATES = gql`
+  {
+    rates(currency: "USD") {
+      currency
+      rate
+    }
+  }
+`
 
 // const useStyles = makeStyles((theme: Theme) => ({}))
 
 const GraphQL: React.FC<Props> = () => {
   // const classes = useStyles()
+  const { loading, error, data } = useQuery(EXCHANGE_RATES)
 
-  applloclient
-    .query({
-      query: gql`
-        {
-          rates(currency: "USD") {
-            currency
-          }
-        }
-      `
-    })
-    .then((result: any) => console.log(result))
+  if (loading) return <p>Loading...</p>
+  if (error) return <p>Error :(</p>
 
-  return <div>graphql</div>
+  return data.rates.map(({ currency, rate }: any) => (
+    <div key={currency}>
+      <p>
+        {currency}: {rate}
+      </p>
+    </div>
+  ))
 }
 
 export default GraphQL
