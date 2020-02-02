@@ -14,6 +14,9 @@ import tophedline, { Article } from '../../repositories/newapi/tophedline'
 type Props = { children?: never }
 
 const useStyles = makeStyles((theme: Theme) => ({
+  sub: {
+    margin: theme.spacing(4)
+  },
   icon: {
     marginRight: theme.spacing(2)
   },
@@ -45,6 +48,8 @@ const XMLHttpRequest: React.FC<Props> = () => {
       setArticles(res.data.articles)
     }
   }
+
+  if (articles.length < 1) return <p className={classes.sub}>Loading...</p>
 
   return (
     <HomeTemplate>
