@@ -14,6 +14,9 @@ import tophedline, { Article } from '../../repositories/newapi/tophedline'
 type Props = { children?: never }
 
 const useStyles = makeStyles((theme: Theme) => ({
+  sub: {
+    margin: theme.spacing(4)
+  },
   icon: {
     marginRight: theme.spacing(2)
   },
@@ -36,15 +39,17 @@ const XMLHttpRequest: React.FC<Props> = () => {
   const filteredArticles = articles.filter(x => x.title && x.description)
 
   useEffect(() => {
-    fetchNews()
+    fetch()
   }, [])
 
-  async function fetchNews() {
+  async function fetch() {
     const res = await tophedline.get('jp', 100)
     if (res.ok) {
       setArticles(res.data.articles)
     }
   }
+
+  if (articles.length < 1) return <p className={classes.sub}>Loading...</p>
 
   return (
     <HomeTemplate>
